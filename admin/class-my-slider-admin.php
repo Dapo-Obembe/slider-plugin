@@ -2,7 +2,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://https://www.alphawebconsult.com
+ * @link       https://example.com
  * @since      1.0.0
  *
  * @package    My_Slider

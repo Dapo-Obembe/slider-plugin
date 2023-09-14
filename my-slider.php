@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://https://www.alphawebconsult.com
+ * @link              https://example.com
  * @since             1.0.0
  * @package           My_Slider
  *
  * @wordpress-plugin
  * Plugin Name:       My Slider
- * Plugin URI:        https://https://www.alphawebconsult.com
+ * Plugin URI:        https://github.com/Dapo-Obembe/slider-plugin
  * Description:       Plugin for showing slider on the frontend
  * Version:           1.0.0
  * Author:            Dapo Obembe
- * Author URI:        https://https://www.alphawebconsult.com
+ * Author URI:        https://github.com/Dapo-Obembe/slider-plugin
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       my-slider
