@@ -4,7 +4,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://https://www.alphawebconsult.com
+ * @link       https://example.com
  * @since      1.0.0
  *
  * @package    My_Slider
