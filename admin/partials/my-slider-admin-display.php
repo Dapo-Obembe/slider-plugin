@@ -30,7 +30,7 @@
 	<input type="hidden" name="my_slider_nonce" value="<?php echo esc_attr( wp_create_nonce( 'my_slider_none' ) ); ?>"> 
 	<tr>
 		<th>
-			<label for="my_slider_link_text">Link Text</label>
+			<label for="my_slider_link_text"><?php esc_html_e( 'Link Text', 'my-slider' ); ?></label>
 		</th>
 		<td>
 			<input 
@@ -45,7 +45,7 @@
 	</tr>
 	<tr>
 		<th>
-			<label for="my_slider_link_url">Link URL</label>
+			<label for="my_slider_link_url"><?php esc_html_e( 'Link URL', 'my-slider' ); ?></label>
 		</th>
 		<td>
 			<input 

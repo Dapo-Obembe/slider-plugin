@@ -16,8 +16,8 @@
 
 	?>
 	<h2 class="nav-tab-wrapper">
-		<a href="?page=my_slider_admin&tab=main_options" class="nav-tab <?php echo 'main_options' === $active_tab ? 'nav-tab-active' : ''; ?>">Main Options</a>
-		<a href="?page=my_slider_admin&tab=additional_options" class="nav-tab <?php echo 'additional_options' === $active_tab ? 'nav-tab-active' : ''; ?>">Additional Options</a>
+		<a href="?page=my_slider_admin&tab=main_options" class="nav-tab <?php echo 'main_options' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Main Options', 'my-slider' ); ?></a>
+		<a href="?page=my_slider_admin&tab=additional_options" class="nav-tab <?php echo 'additional_options' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Additional Options', 'my-slider' ); ?></a>
 	</h2>
 	<form action="options.php" method="post">
 		<?php
@@ -28,7 +28,7 @@
 			settings_fields( 'my_slider_group' );
 			do_settings_sections( 'my_slider_page2' );
 		}
-			submit_button( 'Save Settings' );
+			submit_button( __( 'Save Settings', 'my-slider' ) );
 		?>
 	</form>
 </div>

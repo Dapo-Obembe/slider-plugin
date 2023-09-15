@@ -118,13 +118,13 @@ class My_Slider_Admin {
 		register_post_type(
 			'my-slider',
 			array(
-				'label'              => 'Slider',
-				'description'        => 'Sliders',
+				'label'              => __( 'Slider', 'my-slider' ),
+				'description'        => __( 'Sliders', 'my-slider' ),
 				'labels'             => array(
-					'name'          => 'Sliders',
-					'singular_name' => 'Slider',
-					'add_new_item'  => 'Add New Slider',
-					'edit_item'     => 'Edit Slider',
+					'name'          => __( 'Sliders', 'my-slider' ),
+					'singular_name' => __( 'Slider', 'my-slider' ),
+					'add_new_item'  => __( 'Add New Slider', 'my-slider' ),
+					'edit_item'     => __( 'Edit Slider', 'my-slider' ),
 				),
 				'public'             => true,
 				'supports'           => array( 'title', 'editor', 'thumbnail' ),
@@ -151,8 +151,8 @@ class My_Slider_Admin {
 	 * @version 1.0.0
 	 */
 	public function my_slider_cpt_columns( $columns ) {
-		$columns['my_slider_link_text'] = esc_html( 'Link Text' );
-		$columns['my_slider_link_url']  = esc_html( 'Link URL' );
+		$columns['my_slider_link_text'] = esc_html__( 'Link Text', 'my-slider' );
+		$columns['my_slider_link_url']  = esc_html__( 'Link URL', 'my-slider' );
 		return $columns;
 	}
 	/**
@@ -198,9 +198,9 @@ class My_Slider_Admin {
 
 		add_meta_box(
 			'my_slider_meta_box',
-			'Link Options',
+			__( 'Link Options', 'my-slider' ),
 			array( $this, 'add_meta_boxes_html' ),
-			'my - slider',
+			'my-slider',
 			'normal',
 			'high',
 		);
@@ -237,7 +237,7 @@ class My_Slider_Admin {
 		}
 
 		// Check if the post type matches and if the user can edit the post.
-		if ( isset( $_POST['post_type'] ) && 'my - slider' === $_POST['post_type'] ) {
+		if ( isset( $_POST['post_type'] ) && 'my-slider' === $_POST['post_type'] ) {
 			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return;
 			} elseif ( ! current_user_can( 'edit_page', $post_id ) ) {
@@ -255,12 +255,12 @@ class My_Slider_Admin {
 
 			// Check if the fields are empty.
 			if ( empty( $new_link_text ) ) {
-				update_post_meta( $post_id, 'my_slider_link_text', 'Add some text' );
+				update_post_meta( $post_id, 'my_slider_link_text', __( 'Add some text', 'my-slider' ) );
 			} else {
 				update_post_meta( $post_id, 'my_slider_link_text', sanitize_text_field( $new_link_text ), $old_link_text );
 			}
 			if ( empty( $new_link_url ) ) {
-				update_post_meta( $post_id, 'my_slider_link_url', '// ' );
+				update_post_meta( $post_id, 'my_slider_link_url', '#' );
 			} else {
 				update_post_meta( $post_id, 'my_slider_link_url', esc_url_raw( $new_link_url ), $old_link_url );
 
@@ -275,8 +275,8 @@ class My_Slider_Admin {
 	 */
 	public function add_slider_menu_pages() {
 			add_menu_page(
-				'My Slider Options', // Plugin title.
-				'My Slider', // Page title.
+				__( 'My Slider Options', 'my-slider' ), // Plugin title.
+				__( 'My Slider', 'my-slider' ), // Page title.
 				'manage_options', // Capability.
 				'my_slider_admin', // Slug.
 				array( $this, 'my_slider_settings_page' ), // callback function for the settings page.
@@ -284,8 +284,8 @@ class My_Slider_Admin {
 			);
 			add_submenu_page(
 				'my_slider_admin', // Parent slug.
-				'Manage Slides', // Page title.
-				'Manage Slides', // Menu title.
+				__( 'Manage Slides', 'my-slider' ), // Page title.
+				__( 'Manage Slides', 'my-slider' ), // Menu title.
 				'manage_options', // Capability.
 				'edit.php?post_type=my-slider', // Slug.
 				null, // callback function for the settings page.
@@ -293,8 +293,8 @@ class My_Slider_Admin {
 			);
 			add_submenu_page(
 				'my_slider_admin', // Parent slug.
-				'Add New Slide', // Page title.
-				'Add New Slide', // Menu title.
+				__( 'Add New Slide', 'my-slider' ), // Page title.
+				__( 'Add New Slide', 'my-slider' ), // Menu title.
 				'manage_options', // Capability.
 				'post-new.php?post_type=my-slider', // Page Slug.
 				null, // callback function for the settings page.
@@ -313,7 +313,7 @@ class My_Slider_Admin {
 		}
 		// Notification of success message when the field is saved.
 		if ( isset( $_GET['settings-updated'] ) ) {
-			add_settings_error( 'my_slider_options', 'my_slider_message', 'Settings saved', 'success' );
+			add_settings_error( 'my_slider_options', 'my_slider_message', __( 'Settings saved', 'my-slider' ), 'success' );
 		}
 		settings_errors( 'my_slider_options' );
 
@@ -337,7 +337,7 @@ class My_Slider_Admin {
 	 */
 	public function my_slider_shortcode_callback() {
 		?>
-			<span>Use the shortcode <strong>[my_slider]</strong> to display the slider in any page/post/widget</span>
+			<span><?php esc_html_e( 'Use the shortcode [my_slider] to display the slider in any page/post/widget', 'my-slider' ); ?> </span>
 		<?php
 	}
 	/**
@@ -374,7 +374,7 @@ class My_Slider_Admin {
 			}
 			?>
 		/>
-		<label for="my_slider_bullets">Whether to display bullets or not</label>
+		<label for="my_slider_bullets"><?php esc_html_e( 'Whether to display the bullets or not', 'my-slider' ); ?></label>
 		<?php
 	}
 	/**
@@ -389,9 +389,9 @@ class My_Slider_Admin {
 				id="my_slider_style" 
 				name="my_slider_options[my_slider_style]">
 				<option value="style-1" 
-					<?php isset( self::$options['my_slider_style'] ) ? selected( 'style-1', self::$options['my_slider_style'], true ) : ''; ?>>Style-1</option>
+					<?php isset( self::$options['my_slider_style'] ) ? selected( 'style-1', self::$options['my_slider_style'], true ) : ''; ?>><?php esc_html_e( 'Style-1', 'my-slider' ); ?></option>
 				<option value="style-2" 
-					<?php isset( self::$options['my_slider_style'] ) ? selected( 'style-2', self::$options['my_slider_style'], true ) : ''; ?>>Style-2</option>
+					<?php isset( self::$options['my_slider_style'] ) ? selected( 'style-2', self::$options['my_slider_style'], true ) : ''; ?>><?php esc_html_e( 'Style-2', 'my-slider' ); ?></option>
 			</select>
 			<?php
 	}
@@ -407,8 +407,8 @@ class My_Slider_Admin {
 			switch ( $key ) {
 				case 'my_slider_title':
 					if ( empty( $value ) ) {
-						add_settings_error( 'my_slider_options', 'my_slider_message', 'Title field cannot be left empty!', 'warning' );
-						$value = 'Please type some text';
+						add_settings_error( 'my_slider_options', 'my_slider_message', __( 'Title field cannot be left empty!', 'my-slider' ), 'warning' );
+						$value = __( 'Please type some text', 'my-slider' );
 					}
 					$new_input[ $key ] = sanitize_text_field( $value );
 					break;

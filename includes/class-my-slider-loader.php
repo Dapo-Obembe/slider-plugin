@@ -124,5 +124,4 @@ class My_Slider_Loader {
 		}
 
 	}
-	
 }

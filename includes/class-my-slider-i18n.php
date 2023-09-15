@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define the internationalization functionality
  *
@@ -24,7 +23,7 @@
  * @subpackage My_Slider/includes
  * @author     Dapo Obembe <obembedapo@gmail.com>
  */
-class My_Slider_i18n {
+class My_Slider_I18n {
 
 
 	/**
